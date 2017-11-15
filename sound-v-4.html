@@ -8,7 +8,7 @@
 		/*이번엔 이미지를 넣어보겠습니다!!*/
 		/*동그란 이미지를 쓸 것이라 Border-radius는 지웠습니다 필요없음!!*/
 		.circle{ width:200px; height:200px; background:red;
-			position: absolute; left:200px; top:200px;
+			position: absolute; left:calc(50% - 100px); top:200px;
 			animation: Moving 8s linear infinite;
 			/*애니메이션이름 Moving 8초동안 가속도없이 일정한 속도로 infinite(무한반복) 빙글빙글 돌아가게 해볼께요!!*/
 		}
@@ -31,12 +31,12 @@
 	<input id="audio_file" type="file" accept="audio/*" />
 
 	<div class="circle" id="circle">
-		<img src="wwa.png" id="cImg">
+		<img src="running.jpg" id="cImg">
 		<!-- 자 이렇게 이미지가 들어갔죠? 이름도 cImg로 붙였어요~-->
 	</div>
 
 	<script>
-		var newSound = new SoundBH("wwa.mp3",16);
+		var newSound = new SoundBH("running.mp3",16);
 	
 		(function loop(){ 
  
@@ -44,7 +44,7 @@
 			circle.style.width = vol + "px";
 			circle.style.height = vol + "px";
 			circle.style.borderRadius = vol/2 + "px";
-			circle.style.left = 300 - (vol/2) + "px";
+			circle.style.left = "calc(50% - " + (vol/2) + "px)";
 			circle.style.top = 300 - (vol/2) + "px";
 
 			window.requestAnimationFrame(loop);	
@@ -56,7 +56,7 @@
 		audio_file.onchange = function(){
 		  	newSound.change(URL.createObjectURL(this.files[0]));
 		};
-		
+
 		//자 곡이름 버튼을 누르면
 		play1.onclick = function(){
 			//먼저 이미지 파일명을 바꾸고
